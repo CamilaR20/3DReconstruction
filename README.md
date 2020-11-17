@@ -32,7 +32,7 @@ Where:
   - **k_path** is a json file absolute path which contains the camera matrix.
   - **cloud_path** is an absolute path to where you want to save the point cloud in a .ply file.
   
-### process_pcl
+### Process point cloud
 This program loads a point cloud from a .ply file and ...
 Usage:
 ```

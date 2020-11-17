@@ -20,7 +20,7 @@ In macOS the packages can be installed with Homebrew, e.g:
 brew install opencv@4.5.0
 ```
 
-## Example 
+## Usage 💻 
 ### Reconstruct
 This program shows a 3D reconstruction of an object using the OpenCV SFM module and PCL library, it also saves the point cloud from the reconstruction in a .ply file.
 Usage:

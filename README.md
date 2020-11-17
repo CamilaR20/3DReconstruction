@@ -15,7 +15,7 @@ To build use CMake minimum required 3.17.
   
 * Set your own OpenCV_DIR, PCL_DIR, Ceres_DIR and nlohmann_json_DIR in CMakeList.txt e.g: **/usr/local/Cellar/opencv/4.5.0_2/lib/cmake/opencv4**.
 
-In macOS the packages can be installed with Homebrew. For example: 
+In macOS the packages can be installed with Homebrew, e.g: 
 ```
 brew install opencv@4.5.0
 ```

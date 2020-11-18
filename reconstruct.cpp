@@ -24,9 +24,9 @@ static void help() {
     cout
             << "\n------------------------------------------------------------------------------------\n"
             << " This program shows a 3D reconstruction of an object using the OpenCV SFM module\n"
-            << " and PCL library.\n"
+            << " and PCL library, it also saves the point cloud from the reconstruction in a .ply file.\n"
             << " Usage:\n"
-            << "        main <img_paths> <k_path> <cloud_path>\n"
+            << "        reconstruct <img_paths> <k_path> <cloud_path>\n"
             << " where: img_paths is a txt file absolute path which contains the list of images\n"
             << "        to use for reconstruction. \n"
             << "        k_path is a json file absolute path which contains the camera matrix.\n"
@@ -128,8 +128,7 @@ int main(int argc, char* argv[])
     // Mostrar nube de puntos
     pcl::visualization::PCLVisualizer::Ptr viewer;
     viewer = simpleVis(cloud);
-    while (!viewer->wasStopped ())
-    {
+    while (!viewer->wasStopped ()){
         viewer->spinOnce (100);
         std::this_thread::sleep_for(100ms);
     }

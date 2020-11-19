@@ -44,7 +44,7 @@ simpleVis (pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud){
 
 int main(int argc, char* argv[]) {
     // Check if all input parameters are set
-    if ( argc != 4 ){
+    if ( argc != 6 ){
         help();
         exit(0);
     }

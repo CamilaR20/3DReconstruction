@@ -32,7 +32,7 @@ static void help() {
 }
 
 
-// Función para obtener paths a todas las imágenes
+// To get paths to all images
 static int getdir(const string _filename, vector<String> &files){
     ifstream myfile(_filename.c_str());
     if (!myfile.is_open()) {
@@ -47,7 +47,7 @@ static int getdir(const string _filename, vector<String> &files){
     return 1;
 }
 
-// Función para leer archivo json con matriz de cámara
+// To read json file and get camera matrix
 void get_k(string dir, Matx33d *K){
     json calib;
     ifstream file(dir);
@@ -62,7 +62,7 @@ void get_k(string dir, Matx33d *K){
                   0, 0,  1);
 }
 
-// Función para visualizar nube de puntos
+// To visualize Point Cloud
 pcl::visualization::PCLVisualizer::Ptr simpleVis (pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud){
     // -----Open 3D viewer and add point cloud-----
     pcl::visualization::PCLVisualizer::Ptr viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
@@ -76,17 +76,17 @@ pcl::visualization::PCLVisualizer::Ptr simpleVis (pcl::PointCloud<pcl::PointXYZ>
 
 int main(int argc, char* argv[])
 {
-    // Verificar que se se ingresaron todos los parámetros
+    // Check if all input parameters are set
     if ( argc != 4 ){
         help();
         exit(0);
     }
 
-    // Recuperar paths de las imágenes
+    // Get paths for all images
     vector<String> images_paths;
     getdir( argv[1], images_paths );
 
-    // Recuperar matriz de parámetros intrínsecos de la cámara
+    // Get camera matrix from json file
     Matx33d K;
     get_k(argv[2], &K);
 
@@ -94,7 +94,7 @@ int main(int argc, char* argv[])
     cout << "Intrinsics: " << endl << K << endl << endl;
     cout << "----------------------------" << endl;
 
-    // Crear nube de puntos a partir de imágenes
+    // Reconstruct 3d points from 2d images
     bool is_projective = true;
     vector<Mat> Rs_est, ts_est, points3d_estimated;
     reconstruct(images_paths, Rs_est, ts_est, K, points3d_estimated, is_projective);
@@ -107,7 +107,7 @@ int main(int argc, char* argv[])
     cout << "Refined intrinsics: " << endl << K << endl << endl;
     cout << "----------------------------" << endl;
 
-    // Convertir puntos 3d estimados por opencv <vector> Mat a pcl pointcloud
+    // Convert 3D points stored in vector<Mat> to a pcl pointcloud
     vector<Point3f> pts;
     for(int i = 0; i < points3d_estimated.size(); ++i)
         pts.push_back(Point3f(points3d_estimated[i]));
@@ -120,7 +120,7 @@ int main(int argc, char* argv[])
         (*cloud)[i].z = pts[i].z;
     }
 
-    // Mostrar nube de puntos
+    // Show point cloud
     pcl::visualization::PCLVisualizer::Ptr viewer;
     viewer = simpleVis(cloud);
     while (!viewer->wasStopped ()){
@@ -128,7 +128,7 @@ int main(int argc, char* argv[])
         std::this_thread::sleep_for(100ms);
     }
 
-    // Guardar nube de puntos en archivo .ply
+    // Save point cloud to .ply file
     string filePath = string(argv[3]) + "/cloud.ply";
     pcl::io::savePLYFileBinary(filePath, *cloud);
 

@@ -49,4 +49,4 @@ Where:
 ## Authors ✒️
 * [CamilaR20](https://github.com/CamilaR20)
 * [santiro99](https://github.com/santiro99)
-* [santiro99](https://github.com/elianaromero)
+* [elianaromero](https://github.com/elianaromero)

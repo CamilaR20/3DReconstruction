@@ -17,6 +17,18 @@
 using namespace std;
 using namespace std::chrono_literals;
 
+static void help() {
+    cout
+            << "\n------------------------------------------------------------------------------------\n"
+            << " This program loads a point cloud from a .ply file, filters it with an Statistical\n"
+            << " Outlier filter, then it computes the normals and uses a reconstruction method to \n"
+            << " create a surface using PCL. \n"
+            << " Usage:\n"
+            << "    process_pcl <cloud_path> <mesh_path> <show> <normals_method> <reconstruction_method>\n"
+            << "------------------------------------------------------------------------------------\n\n"
+            << endl;
+}
+
 // To visualize Point Cloud
 pcl::visualization::PCLVisualizer::Ptr
 simpleVis (pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud){
@@ -31,6 +43,12 @@ simpleVis (pcl::PointCloud<pcl::PointXYZ>::ConstPtr cloud){
 }
 
 int main(int argc, char* argv[]) {
+    // Check if all input parameters are set
+    if ( argc != 4 ){
+        help();
+        exit(0);
+    }
+
     // Load point cloud
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
     pcl::io::loadPLYFile(argv[1], *cloud);

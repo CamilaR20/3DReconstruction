@@ -27,11 +27,6 @@ static void help() {
             << " and PCL library, it also saves the point cloud from the reconstruction in a .ply file.\n"
             << " Usage:\n"
             << "        reconstruct <img_paths> <k_path> <cloud_path>\n"
-            << " where: img_paths is an absolute path to a txt file which contains the list of images\n"
-            << "        to use for reconstruction. \n"
-            << "        k_path is an absolute path to a json file which contains the camera matrix.\n"
-            << "        cloud_path is an absolute path to the folder where you want to save the point\n"
-            << "        cloud.\n"
             << "------------------------------------------------------------------------------------\n\n"
             << endl;
 }

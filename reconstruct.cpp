@@ -1,4 +1,4 @@
-// /Users/camilaroa/CLionProjects/imgs/obj/obj_paths.txt /Users/camilaroa/CLionProjects/imgs/calibration.json /Users/camilaroa/CLionProjects/PointClouds/obj.ply
+// /Users/camilaroa/CLionProjects/imgs/obj/obj_paths.txt /Users/camilaroa/CLionProjects/imgs/calibration.json /Users/camilaroa/CLionProjects/PointClouds
 
 #define CERES_FOUND true    // https://answers.opencv.org/question/201467/problem-with-some-functions-of-sfm-module/
 #include <iostream>
@@ -27,11 +27,11 @@ static void help() {
             << " and PCL library, it also saves the point cloud from the reconstruction in a .ply file.\n"
             << " Usage:\n"
             << "        reconstruct <img_paths> <k_path> <cloud_path>\n"
-            << " where: img_paths is a txt file absolute path which contains the list of images\n"
+            << " where: img_paths is an absolute path to a txt file which contains the list of images\n"
             << "        to use for reconstruction. \n"
-            << "        k_path is a json file absolute path which contains the camera matrix.\n"
-            << "        cloud_path is an absolute path to where you want to save the point cloud \n"
-            << "        in a .ply file.\n"
+            << "        k_path is an absolute path to a json file which contains the camera matrix.\n"
+            << "        cloud_path is an absolute path to the folder where you want to save the point\n"
+            << "        cloud.\n"
             << "------------------------------------------------------------------------------------\n\n"
             << endl;
 }
@@ -134,7 +134,7 @@ int main(int argc, char* argv[])
     }
 
     // Guardar nube de puntos en archivo .ply
-    string filePath = argv[3];
+    string filePath = string(argv[3]) + "/cloud.ply";
     pcl::io::savePLYFileBinary(filePath, *cloud);
 
     return 0;

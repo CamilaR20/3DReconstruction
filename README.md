@@ -28,18 +28,23 @@ Usage:
 reconstruct <img_paths> <k_path> <cloud_path>
 ```
 Where:
-  - **img_paths** is a txt file absolute path which contains the list of images to use for reconstruction.
-  - **k_path** is a json file absolute path which contains the camera matrix.
-  - **cloud_path** is an absolute path to where you want to save the point cloud in a .ply file.
+  - **img_paths** is an absolute path to a txt file which contains the list of images to use for reconstruction.
+  - **k_path** is an absolute path to a json file which contains the camera matrix.
+  - **cloud_path** is an absolute path to the folder where you want to save the point cloud in a .ply file.
   
 ### Process point cloud
-This program loads a point cloud from a .ply file and ...
+This program loads a point cloud from a .ply file, filters it with an Statistical Outlier Removal object from PCL, then it computes the normals and uses a reconstruction method to create a surface.
 Usage:
 ```
-process_pcl <ply_path>
+process_pcl <cloud_path> <mesh_path> <show> <normals_method> <reconstruction_method>
 ```
 Where:
-  - **ply_path** is an absolute path to the .ply file.
+  - **ply_path** is an absolute path to the .ply file which contains the point cloud.
+  - **mesh_path** is an absolute path to the folder where you want to save the mesh in a .ply file.
+  - **show** can be 'y' if you want the program to open a viewer and show the point cloud after loading it and after filtering it.
+  - **normals_method** can be 'n' or 'mls' to use smoothing and normal estimation based on polynomial reconstruction.
+  - **reconstruction_method** can be 'p'if you want to use Poisson, 'gt' for Greedy Triangulation or 'gp' for Grid Projection.
+  
 
 ## Authors ✒️
 * [CamilaR20](https://github.com/CamilaR20)

@@ -33,7 +33,7 @@ Where:
   - **cloud_path** is an absolute path to the folder where you want to save the point cloud in a .ply file.
   
 ### Process point cloud
-This program loads a point cloud from a .ply file, filters it with an Statistical Outlier Removal object from PCL, then it computes the normals and uses a reconstruction method to create a surface.
+This program loads a point cloud from a .ply file, filters it with an Statistical Outlier filter, computes the normals and uses a reconstruction method to create a mesh using PCL.
 Usage:
 ```
 process_pcl <cloud_path> <mesh_path> <show> <normals_method> <reconstruction_method>
@@ -49,3 +49,4 @@ Where:
 ## Authors ✒️
 * [CamilaR20](https://github.com/CamilaR20)
 * [santiro99](https://github.com/santiro99)
+* [santiro99](https://github.com/elianaromero)

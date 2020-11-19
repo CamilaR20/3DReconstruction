@@ -83,7 +83,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    // Compute normals of the poit cloud
+    // Compute normals of the point cloud
     pcl::PointCloud<pcl::PointNormal>::Ptr cloud_normals (new pcl::PointCloud<pcl::PointNormal>);
     // k- dimensional tree used to organize the cloud points in k dimensions
     pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>(false));

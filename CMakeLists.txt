@@ -100,7 +100,7 @@ set(OpenCV_LIBRARIES opencv_core opencv_highgui opencv_features2d opencv_calib3d
         opencv_imgproc opencv_imgcodecs opencv_xfeatures2d opencv_sfm)
 
 # link the executable target against libraries
-target_link_libraries(main ${nlohmann_json_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(main ${PCL_LIBRARIES})
 target_link_libraries(reconstruct ${nlohmann_json_LIBRARIES} ${OpenCV_LIBRARIES} ${CERES_LIBRARIES} ${PCL_LIBRARIES})
 target_link_libraries(process ${PCL_LIBRARIES})
 

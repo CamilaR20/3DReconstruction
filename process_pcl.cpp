@@ -131,9 +131,9 @@ int main(int argc, char* argv[]) {
         pcl::GreedyProjectionTriangulation<pcl::PointNormal> gt;
         gt.setInputCloud (cloud_normals);
         gt.setSearchMethod (tree2);
-        gt.setSearchRadius(0.25);
+        gt.setSearchRadius(0.025); // 0.25
         gt.setMu(2.5);
-        gt.setMaximumNearestNeighbors(1000);
+        gt.setMaximumNearestNeighbors(100); // 1000
         gt.setMaximumSurfaceAngle(M_PI/4); // 45 degrees
         gt.setMinimumAngle(0); // 0 degrees
         gt.setMaximumAngle(M_PI); // 180 degrees
@@ -145,8 +145,8 @@ int main(int argc, char* argv[]) {
         pcl::GridProjection<pcl::PointNormal> gp;
         gp.setInputCloud (cloud_normals);
         gp.setSearchMethod(tree2);
-        gp.setResolution(0.01);
-        gp.setPaddingSize(4);
+        gp.setResolution(0.0025); // 0.01
+        gp.setPaddingSize(3); // 4
         gp.reconstruct (*mesh);
     }
     cout << "Reconstruction done "<< endl;

@@ -1,6 +1,6 @@
 # 3D Reconstruction from 2D pictures
 
-This project uses the OpenCV SFM module to reconstruct an object from multiple 2D images and PCL to process the point cloud. It uses CMAKE to compile and it has 3 targets that can be run:
+This project uses the OpenCV SFM module to reconstruct an object from multiple 2D images and PCL to process the point cloud. It uses CMAKE to compile and it has 2 targets that can be run:
   - reconstruct
   - process_pcl
   
